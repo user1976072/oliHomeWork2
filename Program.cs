@@ -31,28 +31,29 @@ Method(num);
 
 // Задача 21
 // вход координаты двух точек и найти расстояние между ними в 3D пространстве
-void Method(int x1, int y1, int z1)
+double Method(int x1, int y1, int z1, int x2, int y2, int z2)
 {
-  int num1 = number / 10000;
-    
-  if (number )
-  {
-    if ()
-      Console.WriteLine("");
-  
-    else
-      Console.WriteLine("");
-  }
-  else 
-    Console.WriteLine(""); 
-  
-  }
+  double rastoanie = Math.Sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1));
+  return rastoanie;
+}
 
-Console.WriteLine($"Введите координаты: {x}, {y}, {z}");
-int num = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите координаты первой точки А: ");
+Console.Write("xA: ");
+int xA = Convert.ToInt32(Console.ReadLine());
+Console.Write("yA: ");
+int yA = Convert.ToInt32(Console.ReadLine());
+Console.Write("zA: ");
+int zA = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите координаты второй точки В: ");
+Console.Write("xВ: ");
+int xB = Convert.ToInt32(Console.ReadLine());
+Console.Write("yВ: ");
+int yB = Convert.ToInt32(Console.ReadLine());
+Console.Write("zВ: ");
+int zB = Convert.ToInt32(Console.ReadLine());
 
-Method(num);
-
+double dist = Method(xA, yA, zA, xB, yB, zB);
+Console.WriteLine($"Расстояние между двумя точками: {dist:f2}");
 
 /*
 // Задача 23
