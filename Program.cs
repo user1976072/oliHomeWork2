@@ -1,4 +1,79 @@
-﻿// решение заданий к семинару №2
+﻿// Решение заданий к семинару №3
+// Задача 19
+// принимает пятизначное число и проверяет является ли оно палиндромом
+/*
+void Method(int number)
+{
+  int num1 = number / 10000;
+  int num2 = number / 1000 % 10;
+  int num3 = number / 100 % 10;
+  int num4 = number / 10 % 10;
+  int num5 = number % 10;
+  
+  if (number > 9999 && number < 100000)
+  {
+    if (num1 == num5 && num2 == num4)
+      Console.WriteLine("Число является палиндромом");
+  
+    else
+      Console.WriteLine("Число не является палиндромом");
+  }
+  else 
+    Console.WriteLine("Число не является пятизначным"); 
+  
+  }
+
+Console.WriteLine("Введите число: ");
+int num = Convert.ToInt32(Console.ReadLine());
+
+Method(num);
+*/
+
+// Задача 21
+// вход координаты двух точек и найти расстояние между ними в 3D пространстве
+void Method(int x1, int y1, int z1)
+{
+  int num1 = number / 10000;
+    
+  if (number )
+  {
+    if ()
+      Console.WriteLine("");
+  
+    else
+      Console.WriteLine("");
+  }
+  else 
+    Console.WriteLine(""); 
+  
+  }
+
+Console.WriteLine($"Введите координаты: {x}, {y}, {z}");
+int num = Convert.ToInt32(Console.ReadLine());
+
+Method(num);
+
+
+/*
+// Задача 23
+// вход число N и выдает таблицу кубов чисел от 1 до N
+
+void Method(int number)
+{
+  for (int i = 1; i <= number; i++)
+  {
+    int N = i * i * i;
+    Console.WriteLine($"{i}^3={N}");
+  }
+}
+
+Console.WriteLine("Введите число: ");
+int num = Convert.ToInt32(Console.ReadLine());
+
+Method(num);
+*/
+
+// решение заданий к семинару №2
 
 //Задача 10
 /*
@@ -44,7 +119,7 @@ int Tnumber = Convert.ToInt32(Console.ReadLine());
 ThirdNum(Tnumber);
 */
 
-
+/*
 // Задача № 15
 
 void Week(int Day)
@@ -61,3 +136,4 @@ Console.WriteLine ("Укажи день недели: ");
 int userNum = Convert.ToInt32(Console.ReadLine());
 Week(userNum);
 
+*/
