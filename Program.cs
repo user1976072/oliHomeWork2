@@ -1,4 +1,106 @@
-﻿// Решение заданий к семинару №3
+﻿// Решение заданий к семинару №4
+/*
+//Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+//3, 5 -> 243 (3⁵)
+//2, 4 -> 16
+int Stepen(int A, int B)
+{
+int result = 1;
+for (int i = 0; i < B; i++)
+{
+    result *= A;
+}
+return result;
+}
+Console.Write("Введите число A: ");
+int A = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите число B: ");
+int B = Convert.ToInt32(Console.ReadLine());
+int result2 = Stepen(A , B);
+Console.WriteLine("Число A в степени B: " + result2);
+*/
+/*
+//Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+//452 -> 11
+//82 -> 10
+//9012 -> 12
+int CummNum(int number)
+{
+int sum = 0;
+while (number > 0)
+{
+    int digit = number % 10;
+    sum = sum + digit;
+    number /= 10;
+}
+return sum;
+}
+Console.WriteLine($"Введите число: ");
+int num = Convert.ToInt32(Console.ReadLine());
+int result = CummNum (num);
+Console.WriteLine($"Сумма цифр числа: {result}"); 
+*/
+
+//Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+//1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
+//6, 1, 33 -> [6, 1, 33]
+
+int[] Massiv(int length)
+{
+int[] array = new int[length]; 
+
+for (int i = 0; i < length; i++)
+{
+    array[i] = new Random().Next(0, 100);
+}
+return array;
+}
+void PrintArray(int[] arrayToPrint)
+{
+    Console.Write("[");
+    for (int i = 0; i < arrayToPrint.Length; i++)
+    {
+        Console.Write(arrayToPrint[i]);
+        if (i < arrayToPrint.Length - 1)
+        {
+            Console.Write(", ");
+        }
+    }
+    Console.Write("]");
+}
+int[] randomArray = Massiv(8);
+PrintArray(randomArray);
+
+// Задача на 4 семинаре
+/*
+int[] GetRandomArray(int length)
+{
+    int[] result = new int[length];
+    for (int i = 0; i < length; i++)
+    {
+        result[i] = new Random().Next(0, 21);
+    }
+    return result;
+}
+
+void PrintArray(int[] arrayToPrint)
+{
+    Console.Write("[");
+    for (int i = 0; i < arrayToPrint.Length; i++)
+    {
+        Console.Write(arrayToPrint[i]);
+        if (i < arrayToPrint.Length - 1)
+        {
+            Console.Write(", ");
+        }
+
+    }
+    Console.Write("]");
+}
+int[] randomArray = GetRandomArray(8);
+PrintArray(randomArray);
+*/
+// Решение заданий к семинару №3
 // Задача 19
 // принимает пятизначное число и проверяет является ли оно палиндромом
 /*
@@ -28,7 +130,7 @@ int num = Convert.ToInt32(Console.ReadLine());
 
 Method(num);
 */
-
+/*
 // Задача 21
 // вход координаты двух точек и найти расстояние между ними в 3D пространстве
 double Method(int x1, int y1, int z1, int x2, int y2, int z2)
@@ -54,7 +156,7 @@ int zB = Convert.ToInt32(Console.ReadLine());
 
 double dist = Method(xA, yA, zA, xB, yB, zB);
 Console.WriteLine($"Расстояние между двумя точками: {dist:f2}");
-
+*/
 /*
 // Задача 23
 // вход число N и выдает таблицу кубов чисел от 1 до N
