@@ -1,4 +1,151 @@
-﻿// Решение заданий к семинару №4
+﻿// Решение заданий к семинару №5
+// Задача 34: 
+// Задайте массив заполненный случайными положительными трёхзначными числами. 
+// Напишите программу, которая покажет количество чётных чисел в массиве.
+// [345, 897, 568, 234] -> 2
+/*
+int[] Massiv(int length)
+{
+    int[] array = new int[length];
+
+    for (int i = 0; i < length; i++)
+    {
+        array[i] = new Random().Next(100, 1000);
+    }
+    return array;
+}
+void PrintArray(int[] arrayToPrint)
+{
+    Console.Write("[");
+    for (int i = 0; i < arrayToPrint.Length; i++)
+    {
+        Console.Write(arrayToPrint[i]);
+        if (i < arrayToPrint.Length - 1)
+        {
+            Console.Write(", ");
+        }
+    }
+    Console.Write("]");
+}
+
+void CountArray(int[] array)
+{
+    int count = 0;
+    int size = 5;
+    for (int i = 0; i < size; i++)
+    {
+        if (array[i] % 2 == 0)
+        {
+            count++;
+        }
+    }
+    Console.Write(" Число четных чисел в массиве:  " + count);
+}
+
+int[] randomArray = Massiv(5);
+PrintArray(randomArray);
+CountArray(randomArray);
+*/
+
+// Задача 36: 
+// Задайте одномерный массив, заполненный случайными числами. 
+// Найдите сумму элементов, стоящих на нечётных позициях.
+// [3, 7, 23, 12] -> 19
+/*
+int[] Massiv(int length)
+{
+    int[] array = new int[length];
+
+    for (int i = 0; i < length; i++)
+    {
+        array[i] = new Random().Next(1, 100);
+    }
+    return array;
+}
+void PrintArray(int[] arrayToPrint)
+{
+    Console.Write("[");
+    for (int i = 0; i < arrayToPrint.Length; i++)
+    {
+        Console.Write(arrayToPrint[i]);
+        if (i < arrayToPrint.Length - 1)
+        {
+            Console.Write(", ");
+        }
+    }
+    Console.Write("]");
+}
+
+void CountArray(int[] array)
+{
+    int sumElem = 0;
+    int size = 5;
+    for (int i = 1; i < size; i = i + 2)
+    {
+        sumElem += array[i];
+    }
+    Console.Write(" Сумма элементов на нечетных позициях:  " + sumElem);
+}
+
+int[] randomArray = Massiv(5);
+PrintArray(randomArray);
+CountArray(randomArray); 
+*/
+// Задача 38: 
+// Задайте массив вещественных чисел. 
+// Найдите разницу между максимальным и минимальным элементов массива.
+// [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
+
+double[] Massiv(int length)
+{
+    double[] array = new double[length];
+
+    for (int i = 0; i < length; i++)
+    {
+        array[i] = new Random().Next(1, 100) + new Random().NextDouble();
+    }
+    return array;
+}
+void PrintArray(double[] arrayToPrint)
+{
+    Console.Write("[");
+    for (int i = 0; i < arrayToPrint.Length; i++)
+    {
+        Console.Write(Math.Round(arrayToPrint[i], 2));
+        if (i < arrayToPrint.Length)
+        {
+            Console.Write(", ");
+        }
+    }
+    Console.Write("]");
+}
+
+void RazArray(double[] array)
+{
+    double maxElem = array[0];
+    double minElem = array[0];
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] > maxElem)
+            maxElem = array[i];
+        
+        if (array[i] < minElem)
+            minElem = array[i];
+    }
+    
+    double raznisa = maxElem - minElem;
+    Console.WriteLine($" Max: {maxElem:f2}");
+    Console.WriteLine($" Min: {minElem:f2}");
+    Console.WriteLine($"Разница между Max и Min: {raznisa:f2}");
+}
+
+double[] randomArray = Massiv(5);
+PrintArray(randomArray);
+RazArray(randomArray);
+
+// Console.WriteLine($" Max: {maxElem:f2}");
+// Console.WriteLine($" Min: {minElem:f2}");
+// Решение заданий к семинару №4
 /*
 //Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
 //3, 5 -> 243 (3⁵)
@@ -44,7 +191,7 @@ Console.WriteLine($"Сумма цифр числа: {result}");
 //Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
 //1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
 //6, 1, 33 -> [6, 1, 33]
-
+/*
 int[] Massiv(int length)
 {
 int[] array = new int[length]; 
@@ -70,7 +217,7 @@ void PrintArray(int[] arrayToPrint)
 }
 int[] randomArray = Massiv(8);
 PrintArray(randomArray);
-
+*/
 // Задача на 4 семинаре
 /*
 int[] GetRandomArray(int length)
