@@ -1,4 +1,134 @@
-﻿// Решение заданий к семинару №6
+﻿// Решение заданий к семинару №7
+/*
+Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+m = 3, n = 4.
+0,5 7 -2 -0,2
+1 -3,3 8 -9,9
+8 7,8 -7,1 9
+*/
+/*
+double[,] Array2d()
+{
+    Console.WriteLine("Введите количество строк: ");
+    int strok = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите количество столбцов: ");
+    int stolb = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите мах число: ");
+    double numMax = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Введите мин число: ");
+    double numMin = Convert.ToDouble(Console.ReadLine());
+
+    double[,] num2dArray = new double[strok, stolb];
+    for (int i = 0; i < strok; i++)
+    {
+        for (int j = 0; j < stolb; j++)
+        {
+            num2dArray[i, j] = Math.Round(new Random().Next(-10, 20) + new Random().NextDouble(), 2);
+            //(new Random().NextDouble() * (numMax - numMin) + numMin, 2);
+            // new Random().Next(задать границы) + new Random().NextDouble()
+        }
+    }
+    return num2dArray;
+}
+
+void Print2dArray(double [,] array2d)
+{
+    for (int i = 0; i < array2d.GetLength(0); i++)
+    {
+        for (int j = 0; j < array2d.GetLength(1); j++)
+        {
+            Console.Write(array2d[i,j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+double [,] new2dArray = Array2d();
+Print2dArray(new2dArray);
+*/
+/*
+Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание,
+ что такого элемента нет.
+Например, задан массив:
+1 4 7 2
+5 9 2 3
+8 4 2 4
+17 -> такого числа в массиве нет
+*/
+int[,] Array2d()
+{
+    Console.WriteLine("Введите количество строк: ");
+    int strok = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите количество столбцов: ");
+    int stolb = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите мах число: ");
+    int numMax = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите мин число: ");
+    int numMin = Convert.ToInt32(Console.ReadLine());
+
+    int[,] num2dArray = new int[strok, stolb];
+    for (int i = 0; i < strok; i++)
+    {
+        for (int j = 0; j < stolb; j++)
+        {
+            num2dArray[i, j] = new Random().Next(numMin, numMax + 1);
+        }
+    }
+    return num2dArray;
+}
+
+void Print2dArray(int[,] array2d)
+{
+    for (int i = 0; i < array2d.GetLength(0); i++)
+    {
+        for (int j = 0; j < array2d.GetLength(1); j++)
+        {
+            Console.Write(array2d[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+int[,] new2dArray = Array2d();
+Print2dArray(new2dArray);
+
+/*
+Console.WriteLine("Введите позицию элемента в массиве по строке:  ");
+int numStr = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите позицию элемента в массиве по столбцу:  ");
+int numStolb = Convert.ToInt32(Console.ReadLine());
+if (numStr < new2dArray.GetLength(0) && numStolb < new2dArray.GetLength(1))
+    Console.WriteLine($"Число в массиве:{new2dArray[numStr, numStolb]}");
+else
+    Console.WriteLine("Число с такой позицией в массиве отсутствует");
+*/
+/*
+Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+Например, задан массив:
+1 4 7 2
+5 9 2 3
+8 4 2 4
+Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+*/
+// метод для формирования и печати массива задан в предыдущей задаче 51:
+
+
+double[] sumColumn = new double[new2dArray.GetLength(1)];
+for (int i = 0; i < new2dArray.GetLength(1); i++)
+{
+    double sum = 0;
+    for (int j = 0; j < new2dArray.GetLength(0); j++)
+    {
+        sum = sum + new2dArray[j,i];
+        sumColumn[i] = Math.Round(sum / new2dArray.GetLength(0), 2);
+    }
+    Console.Write(sumColumn[i] + "; ");
+}
+
+
+// Решение заданий к семинару №6
 // Задача 41: 
 //Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл 
 //пользователь.
@@ -27,7 +157,7 @@ Massiv(M);
 //задаются пользователем.
 //b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
 // 1 способ без массива
-
+/*
 void Metod()
 {
     Console.Write("Введите значение k1: ");
@@ -48,7 +178,7 @@ void Metod()
     Console.WriteLine($"Точка пересечения: ({x}, {y})");
 }
 Metod();
-
+*/
 //2 способ с массивом
 /*
 void Method(double b1, double k1, double b2, double k2)
