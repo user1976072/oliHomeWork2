@@ -1,4 +1,48 @@
-﻿// Решение заданий к семинару №8
+﻿
+// Решение заданий к семинару №9 (Рекурсия)
+//Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
+//N = 5 -> "5, 4, 3, 2, 1"
+//N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
+/*
+void ShowNumber(int numN)
+{
+    Console.Write(numN + ", ");
+    if (numN > 1) ShowNumber(numN - 1);
+}
+ShowNumber(8);
+*/
+//Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+//M = 1; N = 15 -> 120
+//M = 4; N = 8. -> 30
+/*
+int SumNumber(int numM, int numN)
+{
+    if (numM > numN) return 0;
+    if (numM == numN) return numM;
+    else  return numM + SumNumber(numM + 1, numN);
+}
+
+int result = SumNumber(1, 15);
+Console.Write(result);
+*/
+//Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
+//m = 2, n = 3 -> A(m,n) = 9
+//m = 3, n = 2 -> A(m,n) = 29
+
+int FunAkk(int m, int n)
+{
+    if (m == 0) return n + 1;
+    else
+    if (n == 0) return FunAkk(m - 1, 1);
+    else
+        return FunAkk(m - 1, FunAkk(m, n - 1));
+
+}
+
+int result = FunAkk(3, 5);
+Console.Write(result);
+
+// Решение заданий к семинару №8
 // Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива
 //
 /*
@@ -154,7 +198,7 @@ void Print2dArray(int[,] matrix)
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)
 */
-
+/*
 void PrintArray(int[,,] arrayToPrint)
 {
     for (int i = 0; i < arrayToPrint.GetLength(0); i++)
@@ -212,7 +256,7 @@ void FillArray(int[,,] array)
 int[,,] create3dArray = new int[2, 2, 2];
 FillArray(create3dArray);
 PrintArray(create3dArray);
-
+*/
 //Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 /*Например, на выходе получается вот такой массив:
 01 02 03 04
