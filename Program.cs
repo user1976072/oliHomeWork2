@@ -1,61 +1,7 @@
-﻿// Решение заданий к семинару №7
+﻿// Решение заданий к семинару №8
+// Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива
+//
 /*
-Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
-m = 3, n = 4.
-0,5 7 -2 -0,2
-1 -3,3 8 -9,9
-8 7,8 -7,1 9
-*/
-/*
-double[,] Array2d()
-{
-    Console.WriteLine("Введите количество строк: ");
-    int strok = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine("Введите количество столбцов: ");
-    int stolb = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine("Введите мах число: ");
-    double numMax = Convert.ToDouble(Console.ReadLine());
-    Console.WriteLine("Введите мин число: ");
-    double numMin = Convert.ToDouble(Console.ReadLine());
-
-    double[,] num2dArray = new double[strok, stolb];
-    for (int i = 0; i < strok; i++)
-    {
-        for (int j = 0; j < stolb; j++)
-        {
-            num2dArray[i, j] = Math.Round(new Random().Next(-10, 20) + new Random().NextDouble(), 2);
-            //(new Random().NextDouble() * (numMax - numMin) + numMin, 2);
-            // new Random().Next(задать границы) + new Random().NextDouble()
-        }
-    }
-    return num2dArray;
-}
-
-void Print2dArray(double [,] array2d)
-{
-    for (int i = 0; i < array2d.GetLength(0); i++)
-    {
-        for (int j = 0; j < array2d.GetLength(1); j++)
-        {
-            Console.Write(array2d[i,j] + " ");
-        }
-        Console.WriteLine();
-    }
-    Console.WriteLine();
-}
-
-double [,] new2dArray = Array2d();
-Print2dArray(new2dArray);
-*/
-/*
-Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание,
- что такого элемента нет.
-Например, задан массив:
-1 4 7 2
-5 9 2 3
-8 4 2 4
-17 -> такого числа в массиве нет
-*/
 int[,] Array2d()
 {
     Console.WriteLine("Введите количество строк: ");
@@ -93,7 +39,336 @@ void Print2dArray(int[,] array2d)
 
 int[,] new2dArray = Array2d();
 Print2dArray(new2dArray);
+*/
+/*
+for (int i = 0; i < new2dArray.GetLength(0); i++)
+{
+    for (int j = 0; j < new2dArray.GetLength(1); j++)
+    {
+        int num = new2dArray[i, j];
+        int x = j - 1;
+        while (x >= 0 && new2dArray[i, x] < num)
+        {
+            new2dArray[i, x + 1] = new2dArray[i, x];
+            x = x - 1;
+        }
+        new2dArray[i, x + 1] = num;
+    }
+}
 
+Console.WriteLine("Массив по убыванию:");
+for (int i = 0; i < new2dArray.GetLength(0); i++)
+{
+    for (int j = 0; j < new2dArray.GetLength(1); j++)
+    {
+        Console.Write(new2dArray[i, j] + " ");
+    }
+    Console.WriteLine();
+}
+*/
+
+// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+// Например, задан массив:
+//1 4 7 2
+//5 9 2 3
+//8 4 2 4
+//5 2 6 7
+//Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+
+// Массив задан  и распечатан в задании 54.
+/*
+void SumMatrix(int[,] matrix)
+{
+    int index = 0;
+    int minSum = 0;
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        int sum = 0;
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            sum = sum + matrix[i, j];
+        }
+        if (i == 0)
+        {
+            minSum = sum;
+        }
+        else if (sum < minSum)
+        {
+            minSum = sum;
+            index = i;
+        }
+    }
+    Console.WriteLine($" Строка с минимальной суммой элементов: {index + 1} ");
+}
+
+SumMatrix(new2dArray);
+*/
+//Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+/*даны 2 матрицы:
+2 4 | 3 4
+3 2 | 3 3
+Результирующая матрица будет:
+18 20
+15 18
+*/
+/*
+int[,] ArrayA = { {2, 4}, {3, 2} };
+int[,] ArrayB = { {3, 4}, {3, 3} };
+
+int strok1 = ArrayA.GetLength(0);
+int stolb1 = ArrayA.GetLength(1);
+int strok2 = ArrayB.GetLength(0);
+int stolb2 = ArrayB.GetLength(1);
+
+int[,] proizvedMatrix = new int[strok1, stolb2];
+for (int i = 0; i < strok1; i++)
+{
+    for (int j = 0; j < stolb2; j++)
+    {
+        for (int x = 0; x < stolb1; x++)
+        {
+            proizvedMatrix[i, j] += ArrayA[i, x] * ArrayB[x, j]; 
+        }
+    }
+}
+Console.WriteLine("Произведение 2-х матриц:");
+Print2dArray(proizvedMatrix);
+
+void Print2dArray(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            Console.Write(matrix[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+*/
+//Задача 60....Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+/*Массив размером 2 x 2 x 2
+66(0,0,0) 25(0,1,0)
+34(1,0,0) 41(1,1,0)
+27(0,0,1) 90(0,1,1)
+26(1,0,1) 55(1,1,1)
+*/
+
+void PrintArray(int[,,] arrayToPrint)
+{
+    for (int i = 0; i < arrayToPrint.GetLength(0); i++)
+    {
+        for (int j = 0; j < arrayToPrint.GetLength(1); j++)
+        {
+            Console.WriteLine();
+            for (int k = 0; k < arrayToPrint.GetLength(2); k++)
+            {
+                Console.Write($"{arrayToPrint[i, j, k]} ({i},{j},{k}) ");
+            }
+        }
+    }
+}
+
+int[] UniqArray(int size)
+{
+    int[] unArr = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        unArr[i] = new Random().Next(10, 100);
+        if (i != 0)
+        {
+            for (int j = 0; j < i; j++)
+            {
+                while (unArr[j] == unArr[i])
+                {
+                    unArr[i] = new Random().Next(10, 100);
+                }
+            }
+        }
+    }
+    return unArr;
+}
+void FillArray(int[,,] array)
+{
+    int[] tempArr = UniqArray(8); // Вместо 8 надо бы переменную
+    int step = 0;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            for (int k = 0; k < array.GetLength(2); k++)
+            {
+                if (step >= 0 && step < 8)
+                {
+                    array[i, j, k] = tempArr[step];
+                    step++;
+                }
+            }
+        }
+    }
+}
+
+int[,,] create3dArray = new int[2, 2, 2];
+FillArray(create3dArray);
+PrintArray(create3dArray);
+
+//Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+/*Например, на выходе получается вот такой массив:
+01 02 03 04
+12 13 14 05
+11 16 15 06
+10 09 08 07
+*/
+/*
+int n = 4;
+int[,] sqareMatrix = new int[n, n];
+
+int temp = 1;
+int i = 0;
+int j = 0;
+
+while (temp <= sqareMatrix.GetLength(0) * sqareMatrix.GetLength(1))
+{
+  sqareMatrix[i, j] = temp;
+  temp++;
+  if (i <= j + 1 && i + j < sqareMatrix.GetLength(1) - 1)
+    j++;
+  else if (i < j && i + j >= sqareMatrix.GetLength(0) - 1)
+    i++;
+  else if (i >= j && i + j > sqareMatrix.GetLength(1) - 1)
+    j--;
+  else
+    i--;
+}
+
+WriteArray(sqareMatrix);
+
+void WriteArray (int[,] array)
+{
+  for (int i = 0; i < array.GetLength(0); i++)
+  {
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+      
+      Console.Write($" {array[i,j]} ");
+      
+    }
+    Console.WriteLine();
+  }
+}
+*/
+
+
+
+// Решение заданий к семинару №7
+/*
+double[] sumColumn = new double[new2dArray.GetLength(1)];
+for (int i = 0; i < new2dArray.GetLength(1); i++)
+{
+    double sum = 0;
+    for (int j = 0; j < new2dArray.GetLength(0); j++)
+    {
+        sum = sum + new2dArray[j, i];
+        sumColumn[i] = Math.Round(sum / new2dArray.GetLength(0), 2);
+    }
+    Console.Write(sumColumn[i] + "; ");
+}
+Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+m = 3, n = 4.
+0,5 7 -2 -0,2
+1 -3,3 8 -9,9
+8 7,8 -7,1 9
+*/
+/*
+double[,] Array2d()
+{
+    Console.WriteLine("Введите количество строк: ");
+    int strok = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите количество столбцов: ");
+    int stolb = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите мах число: ");
+    double numMax = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Введите мин число: ");
+    double numMin = Convert.ToDouble(Console.ReadLine());
+
+    double[,] num2dArray = new double[strok, stolb];
+    for (int i = 0; i < strok; i++)
+    {
+        for (int j = 0; j < stolb; j++)
+        {
+            num2dArray[i, j] = Math.Round(new Random().Next(-10, 20) + new Random().NextDouble(), 2);
+            //(new Random().NextDouble() * (numMax - numMin) + numMin, 2);
+            // (new Random().Next(задать границы) + new Random().NextDouble(), 2);
+        }
+    }
+    return num2dArray;
+}
+
+void Print2dArray(double [,] array2d)
+{
+    for (int i = 0; i < array2d.GetLength(0); i++)
+    {
+        for (int j = 0; j < array2d.GetLength(1); j++)
+        {
+            Console.Write(array2d[i,j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+double [,] new2dArray = Array2d();
+Print2dArray(new2dArray);
+*/
+/*
+Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание,
+ что такого элемента нет.
+Например, задан массив:
+1 4 7 2
+5 9 2 3
+8 4 2 4
+17 -> такого числа в массиве нет
+*/
+/*
+int[,] Array2d()
+{
+    Console.WriteLine("Введите количество строк: ");
+    int strok = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите количество столбцов: ");
+    int stolb = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите мах число: ");
+    int numMax = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите мин число: ");
+    int numMin = Convert.ToInt32(Console.ReadLine());
+
+    int[,] num2dArray = new int[strok, stolb];
+    for (int i = 0; i < strok; i++)
+    {
+        for (int j = 0; j < stolb; j++)
+        {
+            num2dArray[i, j] = new Random().Next(numMin, numMax + 1);
+        }
+    }
+    return num2dArray;
+}
+
+void Print2dArray(int[,] array2d)
+{
+    for (int i = 0; i < array2d.GetLength(0); i++)
+    {
+        for (int j = 0; j < array2d.GetLength(1); j++)
+        {
+            Console.Write(array2d[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+int[,] new2dArray = Array2d();
+Print2dArray(new2dArray);
+*/
 /*
 Console.WriteLine("Введите позицию элемента в массиве по строке:  ");
 int numStr = Convert.ToInt32(Console.ReadLine());
@@ -114,7 +389,7 @@ else
 */
 // метод для формирования и печати массива задан в предыдущей задаче 51:
 
-
+/*
 double[] sumColumn = new double[new2dArray.GetLength(1)];
 for (int i = 0; i < new2dArray.GetLength(1); i++)
 {
@@ -126,7 +401,7 @@ for (int i = 0; i < new2dArray.GetLength(1); i++)
     }
     Console.Write(sumColumn[i] + "; ");
 }
-
+*/
 
 // Решение заданий к семинару №6
 // Задача 41: 
